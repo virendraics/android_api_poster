@@ -54,7 +54,7 @@ public abstract class AbstractRestClient<REQUEST>
 
 	/**
 	 * As per the requirement client can also pass the additional cookie header which will be added in final headers
-	 * Ex. Passing auth-token in cookie
+	 * Ex. Passing authToken in cookie
 	 */
 	protected Map<String, String> additionalCookie;
 
