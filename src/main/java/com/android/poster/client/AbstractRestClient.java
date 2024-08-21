@@ -53,6 +53,12 @@ public abstract class AbstractRestClient<REQUEST>
 	protected Map<String, String> queryParam;
 
 	/**
+	 * As per the requirement client can also pass the additional cookie header which will be added in final headers
+	 * Ex. Passing auth-token in cookie
+	 */
+	protected Map<String, String> additionalCookie;
+
+	/**
 	 *
 	 */
 	protected AbstractServiceDelegate serviceDelegate;
