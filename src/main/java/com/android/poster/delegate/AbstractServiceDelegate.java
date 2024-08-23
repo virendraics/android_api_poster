@@ -2,9 +2,6 @@ package com.android.poster.delegate;
 
 import com.android.poster.http.HttpMethod;
 import com.android.poster.payload.ContentType;
-import com.android.poster.service.Service;
-import com.android.poster.service.ServiceResolver;
-import com.android.poster.util.ObjectUtil;
 import lombok.Getter;
 
 /**
@@ -17,8 +14,6 @@ import lombok.Getter;
 @Getter
 public abstract class AbstractServiceDelegate 
 {
-	private Service service;
-
 	/**
 	 * The endpoint or path associated with the service.
 	 */
@@ -36,18 +31,15 @@ public abstract class AbstractServiceDelegate
 	
 	/**
 	 * This is a constructor to initialize the service delegate
-	 * @param service
 	 * @param apiEndpoint
 	 * @param httpMethod
 	 * @param contentType
 	 */
 	public AbstractServiceDelegate(
-			Service service,
 			String apiEndpoint,
 			HttpMethod httpMethod, 
 			ContentType contentType)
 	{
-		this.service = service;
 		this.apiEndpoint = apiEndpoint;
 		this.httpMethod = httpMethod;
 		this.contentType = contentType;
@@ -65,10 +57,5 @@ public abstract class AbstractServiceDelegate
 	 *
 	 * @return The complete URL for the service.
 	 */
-	public String getURL()
-	{
-		return getHost()
-				+ (ObjectUtil.isNotEmpty(ServiceResolver.getServiceName(service, true)) ? "/" + ServiceResolver.getServiceName(service, true) : "")
-				+"/" + apiEndpoint;
-	}
+	public abstract String getURL();
 }
